@@ -1,0 +1,55 @@
+in_spec:
+  {
+    "mark": {
+      "type": "point",
+      "tooltip": {
+        "content": "encoding"
+      }
+    },
+    "encoding": {
+      "longitude": {
+        "field": "longitude",
+        "type": "quantitative"
+      },
+      "latitude": {
+        "field": "latitude",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "state",
+        "type": "nominal"
+      },
+      "tooltip": [
+        {
+          "field": "name",
+          "type": "nominal"
+        },
+        {
+          "field": "city",
+          "type": "nominal"
+        },
+        {
+          "field": "state",
+          "type": "nominal"
+        },
+        {
+          "field": "country",
+          "type": "nominal"
+        }
+      ]
+    },
+    "data": {
+      "url": "data/airports.csv"
+    },
+    "projection": {
+      "type": "albersUsa"
+    },
+    "params": [
+      {
+        "name": "p0",
+        "select": "interval",
+        "bind": "scales"
+      }
+    ]
+  }
+

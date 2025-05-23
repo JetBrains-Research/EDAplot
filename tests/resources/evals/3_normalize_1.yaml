@@ -1,0 +1,83 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: cars
+  path: null
+actions:
+  - action_type: select_chart
+    action_kwargs:
+      spec: {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "mark": "bar",
+        "encoding": {
+          "x": {
+            "field": "Origin",
+            "type": "nominal"
+          },
+          "y": {
+            "aggregate": "count",
+            "type": "quantitative"
+          }
+        }
+      }
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: "normalize the counts"
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - bar
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: transform
+        check_kwargs:
+          transforms:
+            - { "aggregate": [ { "op": "count","field": "Origin","as": "Origin_count" } ],"groupby": [ "Origin" ] }
+            - { "joinaggregate": [ { "op": "sum", "field": "Origin_count", "as": "Origin_count_sum" } ] }
+            - { "calculate": "datum['Origin_count'] / datum['Origin_count_sum']", "as": "Origin_ratio" }
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - {
+              "transform": [
+                {
+                  "aggregate": [
+                    {
+                      "op": "count",
+                      "field": "Origin",
+                      "as": "Origin_count"
+                    }
+                  ],
+                  "groupby": [
+                    "Origin"
+                  ]
+                },
+                {
+                  "joinaggregate": [
+                    {
+                      "op": "sum",
+                      "field": "Origin_count",
+                      "as": "Origin_count_sum"
+                    }
+                  ]
+                },
+                {
+                  "calculate": "datum['Origin_count'] / datum['Origin_count_sum']",
+                  "as": "Origin_ratio"
+                }
+              ],
+              "mark": "bar",
+              "encoding": {
+                "x": {
+                  "field": "Origin",
+                  "type": "nominal"
+                },
+                "y": {
+                  "field": "Origin_ratio",
+                  "type": "quantitative"
+                }
+              }
+            }

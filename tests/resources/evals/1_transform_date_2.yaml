@@ -1,0 +1,56 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: seattle-temps
+  path: null
+actions:
+  - action_type: select_chart
+    action_kwargs:
+      spec: {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "mark": "line",
+        "encoding": {
+          "x": {
+            "field": "date",
+            "type": "temporal"
+          },
+          "y": {
+            "field": "temp",
+            "type": "quantitative"
+          }
+        }
+      }
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: start from june
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - line
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: transform
+        check_kwargs:
+          transforms:
+            - { "filter": { "field": "date", "timeUnit": "month", "gte": 6 } }
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "mark": "line",
+              "transform": [{ "filter": { "field": "date", "timeUnit": "month", "gte": 6 } }],
+              "encoding": {
+                "x": {
+                  "field": "date",
+                  "type": "temporal"
+                },
+                "y": {
+                  "field": "temp",
+                  "type": "quantitative"
+                }
+              }
+            }

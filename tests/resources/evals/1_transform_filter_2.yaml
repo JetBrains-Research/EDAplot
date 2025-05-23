@@ -1,0 +1,27 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: airports
+  path: null
+actions:
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: "show states with count of records less than 50"
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - bar
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: transform
+        check_kwargs:
+          transforms:
+            - { "aggregate": [ { "op": "count","field": "iata","as": "record_count" } ],"groupby": [ "state" ] }
+            - { "filter": { "field": "record_count","lt": 50 } }
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - { "transform": [ { "aggregate": [ { "op": "count","field": "iata","as": "record_count" } ],"groupby": [ "state" ] },{ "filter": { "field": "record_count","lt": 50 } } ],"mark": "bar","encoding": { "x": { "field": "state","type": "nominal" },"y": { "field": "record_count","type": "quantitative" } } }

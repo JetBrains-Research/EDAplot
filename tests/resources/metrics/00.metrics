@@ -1,0 +1,20 @@
+{
+    "mark_f1": 1.0,
+    "mark_precision": 1.0,
+    "mark_recall": 1.0,
+    "encoding_f1": 0.8823529411764707,
+    "encoding_precision": 1.0,
+    "encoding_recall": 0.8571428571428571,
+    "transform_precision": 1.0,
+    "transform_recall": 1.0,
+    "full_f1": 0.625000000000000,
+    "full_precision": 0.71428571428571428571,
+    "full_recall": 0.55555555555555555,
+    "keys_f1": 0.69565217391304347826,
+    "keys_precision": 0.8,
+    "keys_recall": 0.61538461538461538462,
+    "keys_jaccard": 0.54545454545454545455,
+    "kvs_f1": 0.625,
+    "kvs_precision": 0.71428571428571428571,
+    "kvs_recall": 0.55555555555555555556
+}

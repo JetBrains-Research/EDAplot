@@ -1,0 +1,26 @@
+in_spec:
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "nlv_corpus/12"
+    },
+    "transform": [
+      {
+        "filter": "datum.Weight > 3000"
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "aggregate": "count",
+        "type": "quantitative"
+      },
+      "x": {
+        "value": "Heavy Cars"
+      }
+    }
+  }
+gt_validity:
+  is_valid_schema: false
+  is_valid_scenegraph: true
+  is_empty_scenegraph: false

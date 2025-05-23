@@ -1,0 +1,15 @@
+{
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Province",
+      "type": "ordinal",
+      "title": "Province"
+    },
+    "y": {
+      "field": "Population density per square kilometre 2021",
+      "type": "quantitative",
+      "title": "Population Density (per km²)"
+    }
+  }
+}

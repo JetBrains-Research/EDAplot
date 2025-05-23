@@ -1,0 +1,44 @@
+spec_history:
+  - {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "Cylinders",
+        "type": "ordinal"
+      },
+      "y": {
+        "aggregate": "mean",
+        "field": "Miles_per_Gallon",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "Origin",
+        "type": "nominal"
+      }
+    }
+  }
+in_spec:
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "data/cars.json"
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "Cylinders",
+        "type": "ordinal"
+      },
+      "y": {
+        "aggregate": "mean",
+        "field": "Miles_per_Gallon",
+        "type": "quantitative"
+      },
+      "color": {
+        "value": "#abcdef"
+      }
+    }
+  }
+gt_spec: "in_spec"
+fix_restore_fields_spec: "in_spec"

@@ -1,0 +1,30 @@
+{
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "dataset",
+      "type": "nominal",
+      "axis": {
+        "title": "Dataset Type"
+      }
+    },
+    "y": {
+      "field": "responseRate",
+      "type": "quantitative",
+      "axis": {
+        "title": "Response Rate"
+      }
+    },
+    "color": {
+      "field": "dataset_size",
+      "type": "nominal",
+      "legend": {
+        "title": "Dataset Size"
+      }
+    },
+    "column": {
+      "field": "dataset_size",
+      "type": "nominal"
+    }
+  }
+}

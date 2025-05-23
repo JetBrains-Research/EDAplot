@@ -1,0 +1,24 @@
+in_spec:
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "data/seattle-temps.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "timeUnit": "month",
+        "field": "date",
+        "type": "temporal"
+      },
+      "y": {
+        "aggregate": "mean",
+        "field": {
+          "calculate": "(datum.temp - 32) * 5 / 9",
+          "type": "quantitative"
+        },
+        "type": "quantitative"
+      }
+    }
+  }
+

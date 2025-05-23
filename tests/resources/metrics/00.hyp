@@ -1,0 +1,15 @@
+{
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Date"
+    },
+    "y": {
+      "field": "price",
+      "type": "quantitative",
+      "title": "Price"
+    }
+  }
+}

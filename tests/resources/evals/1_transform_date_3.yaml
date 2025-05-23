@@ -1,0 +1,29 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: stocks
+  path: null
+actions:
+  - action_type: select_chart
+    action_kwargs:
+      spec: { "$schema": "https://vega.github.io/schema/vega-lite/v5.json","mark": "line","encoding": { "x": { "field": "date","type": "temporal","title": "Date" },"y": { "field": "price","type": "quantitative","title": "Price" },"color": { "field": "symbol","type": "nominal","title": "Stock Symbol" } } }
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: show since 2004
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - line
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: transform
+        check_kwargs:
+          transforms:
+            - { "filter": { "field": "date","gte": { "year": 2004 } } }
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - { "$schema": "https://vega.github.io/schema/vega-lite/v5.json","transform": [ { "filter": { "field": "date","gte": { "year": 2004 } } } ],"mark": "line","encoding": { "x": { "field": "date","type": "temporal","title": "Date" },"y": { "field": "price","type": "quantitative","title": "Price" },"color": { "field": "symbol","type": "nominal","title": "Stock Symbol" } } }

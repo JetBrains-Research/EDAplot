@@ -1,0 +1,48 @@
+- id: chart_llm_gold_36
+  utterance: How does the access to the electricity change over time in countries in east africa?
+- id: chart_llm_gold_6
+  utterance: Draw an area plot of GDP from 1950s to 2010s by country
+- id: chart_llm_gold_22
+  utterance: draw a stacked bar chart showing how much each immigrant type occupies the total population of US states.
+- id: chart_llm_gold_5
+  utterance: Line chart with old people ratio highlighting Japan and South Korea
+- id: chart_llm_gold_27
+  utterance: Is there a decreasing trend of Gross savings over time in Canada?
+- id: chart_llm_gold_39
+  utterance: >-
+    Which department has the highest number of total voters?
+    Which municipality has the lowest number of total voters?
+    Which department has the highest abstention rate?
+    How many people voted by each region in Columbia?
+- id: nlv_corpus_5
+  utterance: Cylinders average mpg
+- id: nlv_corpus_15
+  utterance: give me a scatterplot of imdb rating as x axis and rotten tomatoes rating as y axis
+- id: nlv_corpus_55
+  utterance: Line chart, Sum of sales by order date, on category
+- id: nlv_corpus_48
+  utterance: Descending Column Chart of Count vs Sub-category
+- id: nlv_corpus_44
+  utterance: Line Graph of SUM (Sales Forecast) vs Order Date
+- id: chart_llm_gold_32_matplotlib
+  utterance: Make a bar chart with "Responce" as x-axis and the percentage of "Responce" as y-axis
+- id: chart_llm_gold_12_matplotlib
+  utterance: What are the types of dept in UK?
+- id: chart_llm_gold_29_matplotlib
+  utterance: Can you compare the tax rate for a company in G20 countries?
+- id: chart_llm_gold_35_matplotlib
+  utterance: Draw a layered chart showing changes in hate crime rate for different ethnic groups.
+- id: chart_llm_gold_47_matplotlib
+  utterance: Return by env step for agent type
+- id: chart_llm_gold_43_matplotlib
+  utterance: Are there any correlation between poverty rate and money bond rate?
+- id: nlv_corpus_33_matplotlib
+  utterance: show me bars\nshow me creative type
+- id: nlv_corpus_25_matplotlib
+  utterance: Acceleration by weight scatterplot facet by origin
+- id: nlv_corpus_61_matplotlib
+  utterance: Frequency chart, order quantity
+- id: nlv_corpus_87_matplotlib
+  utterance: plot a simple line chart that Sums the Worldwide Gross of major films versus release year parameterized by Major Genre.\nDo not use symbols and show only major gridlines. Extend the axis to the labels.
+- id: nlv_corpus_80_matplotlib
+  utterance: Average Production Budget by Year

@@ -1,0 +1,81 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: seattle-temps
+  path: null
+actions:
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: Plot the median temperature by month
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - line
+            - bar
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: has_field
+        check_kwargs:
+          fields:
+            - path: "encoding/y/aggregate"
+              value: median
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "data": { "url": "data/seattle-temps.json" },
+              "mark": "line",
+              "encoding": {
+                "x": {
+                  "field": "date",
+                  "type": "temporal",
+                  "timeUnit": "month"
+                },
+                "y": {
+                  "aggregate": "median",
+                  "field": "temp",
+                  "type": "quantitative"
+                }
+              }
+            }
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: Compute the average instead
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - line
+            - bar
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: has_field
+        check_kwargs:
+          fields:
+            - path: "encoding/y/aggregate"
+              value: mean
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "data": { "url": "data/seattle-temps.json" },
+              "mark": "line",
+              "encoding": {
+                "x": {
+                  "field": "date",
+                  "type": "temporal",
+                  "timeUnit": "month"
+                },
+                "y": {
+                  "aggregate": "mean",
+                  "field": "temp",
+                  "type": "quantitative"
+                }
+              }
+            }

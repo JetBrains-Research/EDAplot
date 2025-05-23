@@ -1,0 +1,40 @@
+in_spec:
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "nlv_corpus/90"
+    },
+    "mark": {
+      "type": "bar",
+      "color": "blue"
+    },
+    "encoding": {
+      "x": {
+        "field": "Major Genre",
+        "type": "ordinal",
+        "sort": "alphabetical"
+      },
+      "y": {
+        "aggregate": "mean",
+        "field": "Worldwide Gross",
+        "type": "quantitative"
+      },
+      "y2": {
+        "field": "Worldwide Gross",
+        "type": "quantitative"
+      }
+    },
+    "config": {
+      "grid": {
+        "y": {
+          "grid": true,
+          "gridColor": "lightgray",
+          "gridOpacity": 0.5
+        }
+      }
+    }
+  }
+gt_validity:
+  is_valid_schema: false
+  is_valid_scenegraph: true
+  is_empty_scenegraph: true

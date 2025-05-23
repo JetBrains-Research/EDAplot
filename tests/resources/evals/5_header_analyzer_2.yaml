@@ -1,0 +1,14 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: driving
+  path: null
+actions:
+  - action_type: header_analyzer
+    action_kwargs: null
+    checks:
+      - check_type: header_analyzer
+        check_kwargs:
+          unclear:
+            - "side"

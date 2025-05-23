@@ -1,0 +1,28 @@
+in_spec: {
+  "data": {
+    "url": "chart_llm_gold/15_question",
+    "parse_dates": true,
+    "normalize_column_names": false
+  },
+  "mark": {
+    "type": "line"
+  },
+  "encoding": {
+    "color": {
+      "field": "series",
+      "type": "nominal"
+    },
+    "x": {
+      "field": "date",
+      "type": "temporal"
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative"
+    }
+  }
+}
+gt_validity:
+  is_valid_schema: true
+  is_valid_scenegraph: true
+  is_empty_scenegraph: false

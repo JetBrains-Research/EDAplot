@@ -1,0 +1,70 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: cars
+  path: null
+actions:
+  - action_type: select_chart
+    action_kwargs:
+      spec: {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "mark": "bar",
+        "encoding": {
+          "x": {
+            "field": "Cylinders",
+            "type": "ordinal"
+          },
+          "y": {
+            "aggregate": "mean",
+            "field": "Miles_per_Gallon",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "Origin",
+            "type": "nominal"
+          }
+        }
+      }
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: change color to black, red and yellow
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - bar
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: colors
+        check_kwargs:
+          colors:
+            - black
+            - red
+            - yellow
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "mark": "bar",
+              "encoding": {
+                "x": {
+                  "field": "Cylinders",
+                  "type": "ordinal"
+                },
+                "y": {
+                  "aggregate": "mean",
+                  "field": "Miles_per_Gallon",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "field": "Origin",
+                  "type": "nominal",
+                  "scale": {
+                    "range": [ "black", "red", "yellow" ]
+                  }
+                }
+              }
+            }

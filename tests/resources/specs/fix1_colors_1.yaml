@@ -1,0 +1,80 @@
+spec_history:
+  - {
+    "mark": "line",
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "temporal"
+      },
+      "y": {
+        "aggregate": "mean",
+        "field": "Miles_per_Gallon",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "Origin",
+        "type": "nominal"
+      }
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
+  }
+in_spec:
+  {
+    "mark": "line",
+    "data": {
+      "url": "data/cars.json"
+    },
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "temporal"
+      },
+      "y": {
+        "aggregate": "mean",
+        "field": "Miles_per_Gallon",
+        "type": "quantitative"
+      },
+      "color": {
+        "scale": {
+          "domain": [
+            "USA",
+            "Europe",
+            "Asia"
+          ],
+          "range": [
+            "pink",
+            "yellow",
+            "blue"
+          ]
+        }
+      }
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
+  }
+gt_spec:
+  {
+    "mark": "line",
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "temporal"
+      },
+      "y": {
+        "aggregate": "mean",
+        "field": "Miles_per_Gallon",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "Origin",
+        "type": "nominal",
+        "scale": {
+          "range": [
+            "pink",
+            "yellow",
+            "blue"
+          ]
+        }
+      }
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json"
+  }

@@ -1,0 +1,14 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: seattle-temps
+  path: null
+actions:
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: Plot cloudiness and precipitation levels
+    checks:
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: true

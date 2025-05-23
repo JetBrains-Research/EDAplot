@@ -1,0 +1,2 @@
+in_spec: { "data": {"url": "data/stocks.csv"}, "$schema": "https://vega.github.io/schema/vega-lite/v5.json","transform": [ { "filter": { "field": "date","gte": { "year": 2004 } } } ],"mark": "line","encoding": { "x": { "field": "date","type": "temporal","title": "Date" },"y": { "field": "price","type": "quantitative","title": "Price" },"color": { "field": "symbol","type": "nominal","title": "Stock Symbol" } } }
+gt_spec: in_spec

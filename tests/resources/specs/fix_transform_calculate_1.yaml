@@ -1,0 +1,30 @@
+in_spec:
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "data/seattle-temps.csv"
+    },
+    "mark": "line",
+    "encoding": {
+      "x": {
+        "field": "date",
+        "type": "temporal",
+        "title": "Date"
+      },
+      "y": {
+        "field": "temp",
+        "type": "quantitative",
+        "title": "Temperature (\u00b0C)",
+        "aggregate": "mean",
+        "axis": {
+          "format": ".1f"
+        }
+      }
+    },
+    "transform": [
+      {
+        "calculate": "((datum.temp - 32) * 5 / 9)",
+        "as": "temp_celsius"
+      }
+    ]
+  }

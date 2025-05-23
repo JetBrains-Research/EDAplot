@@ -1,0 +1,51 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: seattle-temps
+  path: null
+actions:
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: Plot the mean temperature by month
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - line
+            - bar
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: has_field
+        check_kwargs:
+          fields:
+            - path: "encoding/y/aggregate"
+              value: mean
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "data": { "url": "data/seattle-temps.json" },
+              "mark": "line",
+              "encoding": {
+                "x": {
+                  "field": "date",
+                  "type": "temporal",
+                  "timeUnit": "month"
+                },
+                "y": {
+                  "aggregate": "mean",
+                  "field": "temp",
+                  "type": "quantitative"
+                }
+              }
+            }
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: now show the precipitation levels as well
+    checks:
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: true

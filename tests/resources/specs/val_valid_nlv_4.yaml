@@ -1,0 +1,6 @@
+in_spec:
+  {"data": {"url": "nlv_corpus/4"}, "config":{"view":{"continuousWidth":300,"continuousHeight":300}},"mark":{"type":"bar"},"encoding":{"color":{"field":"Major Genre","legend":{"title":"Major Genre"},"type":"nominal"},"tooltip":[{"field":"Running Time","type":"quantitative"},{"aggregate":"count","type":"quantitative"}],"x":{"bin":true,"field":"Running Time","title":"Running Time (minutes)","type":"quantitative"},"y":{"aggregate":"count","title":"Count","type":"quantitative"}},"title":"Histogram of Running Time","$schema":"https://vega.github.io/schema/vega-lite/v5.20.1.json"}
+gt_validity:
+  is_valid_schema: true
+  is_valid_scenegraph: true
+  is_empty_scenegraph: false

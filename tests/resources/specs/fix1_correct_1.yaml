@@ -1,0 +1,28 @@
+in_spec:
+  {
+    "data": {
+      "url": "data/cars.json"
+    },
+    "facet": {
+      "row": {
+        "field": "Origin"
+      }
+    },
+    "spec": {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "bin": {
+            "maxbins": 15
+          },
+          "field": "Horsepower",
+          "type": "quantitative"
+        },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative"
+        }
+      }
+    }
+  }
+gt_spec: "in_spec"

@@ -1,0 +1,72 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: iowa-electricity
+  path: null
+actions:
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: "normalized distribution of the average net_generation by source as a bar chart"
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - bar
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: transform
+        check_kwargs:
+          transforms:
+            - { "aggregate": [ { "op": "mean", "field": "net_generation", "as": "mean_net_generation" } ], "groupby": [ "source" ] }
+            - { "joinaggregate": [ { "op": "sum", "field": "mean_net_generation", "as": "sum_mean_net_generation" } ] }
+            - { "calculate": "datum['mean_net_generation'] / datum['sum_mean_net_generation']", "as": "normalized_mean_net_generation" }
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "mark": "bar",
+              "encoding": {
+                "x": {
+                  "field": "source",
+                  "type": "nominal"
+                },
+                "y": {
+                  "field": "normalized_mean_net_generation",
+                  "type": "quantitative"
+                }
+              },
+              "data": {
+                "url": "data/iowa-electricity.csv"
+              },
+              "transform": [
+                {
+                  "aggregate": [
+                    {
+                      "op": "mean",
+                      "field": "net_generation",
+                      "as": "mean_net_generation"
+                    }
+                  ],
+                  "groupby": [
+                    "source"
+                  ]
+                },
+                {
+                  "joinaggregate": [
+                    {
+                      "op": "sum",
+                      "field": "mean_net_generation",
+                      "as": "sum_mean_net_generation"
+                    }
+                  ]
+                },
+                {
+                  "calculate": "datum['mean_net_generation'] / datum['sum_mean_net_generation']",
+                  "as": "normalized_mean_net_generation"
+                }
+              ]
+            }
+

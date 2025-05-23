@@ -1,0 +1,4 @@
+in_spec:
+  { "data": {"url": "data/cars.json"}, "transform": [ { "filter": { "field": "Year", "timeUnit": "year", "gte": 10 } } ],"mark": "line","encoding": { "x": { "field": "Year","type": "temporal" },"y": { "aggregate": "mean","field": "Miles_per_Gallon","type": "quantitative" },"color": { "field": "Origin","type": "nominal" } },"$schema": "https://vega.github.io/schema/vega-lite/v5.json" }
+gt_spec:
+  { "transform": [ { "filter": { "field": "Year", "timeUnit": "year", "gte": 10 } } ],"mark": "line","encoding": { "x": { "field": "Year","type": "temporal" },"y": { "aggregate": "mean","field": "Miles_per_Gallon","type": "quantitative" },"color": { "field": "Origin","type": "nominal" } },"$schema": "https://vega.github.io/schema/vega-lite/v5.json" }

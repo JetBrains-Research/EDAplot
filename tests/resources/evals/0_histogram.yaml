@@ -1,0 +1,18 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: cars
+  path: null
+actions:
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: Make a histogram
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - bar
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false

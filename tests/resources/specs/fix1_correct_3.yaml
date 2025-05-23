@@ -1,0 +1,29 @@
+in_spec:
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "mark": "bar",
+    "data": {"url": "data/cars.json"},
+    "encoding": {
+      "x": {
+        "field": "Cylinders",
+        "type": "ordinal"
+      },
+      "y": {
+        "aggregate": "mean",
+        "field": "Miles_per_Gallon",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "Origin",
+        "type": "nominal",
+        "scale": {
+          "range": [
+            "black",
+            "red",
+            "yellow"
+          ]
+        }
+      }
+    }
+  }
+gt_spec: in_spec

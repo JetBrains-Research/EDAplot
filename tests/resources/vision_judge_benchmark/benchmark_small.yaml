@@ -1,0 +1,10 @@
+- id: chart_llm_gold_6
+  utterance: Draw an area plot of GDP from 1950s to 2010s by country
+- id: nlv_corpus_44
+  utterance: Line Graph of SUM (Sales Forecast) vs Order Date
+- id: chart_llm_gold_12_matplotlib
+  utterance: What are the types of dept in UK?
+- id: nlv_corpus_25_matplotlib
+  utterance: Acceleration by weight scatterplot facet by origin
+- id: nlv_corpus_48
+  utterance: Descending Column Chart of Count vs Sub-category

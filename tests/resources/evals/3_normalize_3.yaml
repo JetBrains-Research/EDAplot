@@ -1,0 +1,72 @@
+id: null
+data:
+  dataset_config:
+    name: vega_datasets
+  dataset_item_id: la-riots
+  path: null
+actions:
+  - action_type: user_utterance
+    action_kwargs:
+      user_utterance: show "race" on the x axis and the normalized count of records on the y axis
+    checks:
+      - check_type: mark
+        check_kwargs:
+          mark_type:
+            - bar
+      - check_type: request_analyzer
+        check_kwargs:
+          should_warn: false
+      - check_type: transform
+        check_kwargs:
+          transforms:
+            - { "aggregate": [ { "op": "count","as": "count" } ],"groupby": [ "race" ] }
+            - { "joinaggregate": [ { "op": "sum", "field": "count", "as": "sum_count" } ] }
+            - { "calculate": "datum['count'] / datum['sum_count']", "as": "normalized_count" }
+      - check_type: ground_truth
+        check_kwargs:
+          specs:
+            - {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "mark": "bar",
+              "encoding": {
+                "x": {
+                  "field": "race",
+                  "type": "nominal"
+                },
+                "y": {
+                  "field": "normalized_count",
+                  "type": "quantitative",
+                  "title": "Normalized Count"
+                }
+              },
+              "transform": [
+                {
+                  "aggregate": [
+                    {
+                      "op": "count",
+                      "as": "count"
+                    }
+                  ],
+                  "groupby": [
+                    "race"
+                  ]
+                },
+                {
+                  "joinaggregate": [
+                    {
+                      "op": "sum",
+                      "field": "count",
+                      "as": "sum_count"
+                    }
+                  ]
+                },
+                {
+                  "calculate": "datum['count'] / datum['sum_count']",
+                  "as": "normalized_count"
+                }
+              ],
+              "data": {
+                "url": "data/la-riots.csv"
+              }
+            }
+

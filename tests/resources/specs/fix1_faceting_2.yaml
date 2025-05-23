@@ -1,0 +1,50 @@
+in_spec:
+  {
+    "data": {
+      "url": "data/cars.json"
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "bin": {
+          "maxbins": 15
+        },
+        "field": "Horsepower",
+        "type": "quantitative"
+      },
+      "y": {
+        "aggregate": "count",
+        "type": "quantitative"
+      }
+    },
+    "facet": {
+      "column": {
+        "field": "Origin",
+        "type": "quantitative"
+      }
+    }
+  }
+gt_spec:
+  {
+    "data": {
+      "url": "data/cars.json"
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "bin": {
+          "maxbins": 15
+        },
+        "field": "Horsepower",
+        "type": "quantitative"
+      },
+      "y": {
+        "aggregate": "count",
+        "type": "quantitative"
+      },
+      "column": {
+        "field": "Origin",
+        "type": "quantitative"
+      }
+    }
+  }

@@ -1,0 +1,57 @@
+in_spec:
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "data/seattle-temps.csv" },
+    "mark": "line",
+    "encoding": {
+      "x": {
+        "field": "date",
+        "type": "temporal"
+      },
+      "y": {
+        "field": "temp",
+        "type": "quantitative",
+        "scale": {
+          "domain": [
+            0,
+            null
+          ]
+        },
+        "axis": {
+          "title": "Temperature (multiplied by 2)"
+        }
+      }
+    },
+    "transform": [
+      {
+        "calculate": "datum.temp * 2",
+        "as": "temp"
+      }
+    ]
+  }
+gt_spec:
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "data/seattle-temps.csv" },
+    "mark": "line",
+    "encoding": {
+      "x": {
+        "field": "date",
+        "type": "temporal"
+      },
+      "y": {
+        "field": "temp",
+        "type": "quantitative",
+        "scale": {},
+        "axis": {
+          "title": "Temperature (multiplied by 2)"
+        }
+      }
+    },
+    "transform": [
+      {
+        "calculate": "datum.temp * 2",
+        "as": "temp"
+      }
+    ]
+  }

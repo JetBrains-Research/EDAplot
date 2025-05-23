@@ -1,0 +1,124 @@
+[tool.black]
+# exclusion from the previous include: Jupyter notebooks to get rid of annoying black message and some other default stuff
+#  from https://github.com/psf/black/blob/22.12.0/src/black/const.py#L2
+force-exclude = '''/(
+    \.direnv
+    | \.eggs
+    | \.git
+    | \.hg
+    | \.ipynb_checkpoints
+    | \.mypy_cache
+    | \.nox
+    | \.pytest_cache
+    | \.ruff_cache
+    | \.tox
+    | \.svn
+    | \.venv
+    | \.vscode
+    | __pypackages__
+    | _build
+    | buck-out
+    | build
+    | dist
+    | venv
+    | __pycache__
+    | dataset/
+)/
+    | .*\.ipynb'''
+line-length = 120
+target-version = ["py312"]
+
+[tool.isort]
+extend_skip = ["resources/", "dataset/"]
+line_length = 120
+profile = "black"
+py_version = 312
+known_third_party = ["wandb"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["."]
+exclude = ["dataset/"]
+explicit_package_bases = true
+check_untyped_defs = true
+disable_error_code = "type-abstract"
+disallow_untyped_defs = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+allow_redefinition = true
+
+[[tool.mypy.overrides]]
+module = [
+  "datasets",
+  "commentjson",
+  "vega_datasets",
+  "lida.*",
+  "vl_convert",
+  "streamlit_lets_plot"
+]
+ignore_missing_imports = true
+
+
+[tool.poetry]
+name = "edaplot"
+version = "0.1.13"
+description = "A library for creating Vega-Lite charts using LLMs."
+authors = [
+    "Marko Hostnik <marko.hostnik@jetbrains.com>",
+]
+readme = "README.md"
+repository = "https://github.com/JetBrains-Research/EDAplot"
+packages = [
+    { include = "edaplot", from = "." },
+]
+
+[tool.poetry.requires-plugins]
+poetry-plugin-dotenv = "^2.7.3"
+poetry-plugin-export = "^1.8"
+
+
+[tool.poetry.dependencies]  # main dependencies for edaplot
+python = "^3.12"
+pandas = "^2.2.3"
+altair = {extras = ["all"], version = "^5.5.0"}
+vl-convert-python = "^1.7.0"
+langchain = "^0.3.14"
+langchain-openai = "^0.3.0"
+commentjson = "^0.9.0"
+pillow = "^11.1.0"
+tqdm = "^4.67.1"
+
+[tool.poetry.group.dev.dependencies]  # development process dependencies
+black = "*"
+isort = "*"
+mypy = "*"
+pytest = "*"
+types-tqdm = "*"
+types-tree-sitter = "*"
+types-editdistance = "*"
+types-tabulate = "*"
+pandas-stubs = "*"
+types-pyyaml = "*"
+types-setuptools = "*"
+pre-commit = "*"
+types-jsonschema = "*"
+
+[tool.poetry.group.frontend.dependencies]
+streamlit = "^1.37"
+lets-plot = "^4.6.0a2"
+streamlit-lets-plot-comp={version = "0.2.dev2", allow-prereleases = true}
+
+[tool.poetry.group.benchmark.dependencies]  # benchmarking dependencies
+streamlit = "^1.37"
+scipy = "^1.14.1"
+matplotlib = "^3.9.2"
+lida = "^0.0.14"
+scikit-learn = "^1.5.2"  # for lida
+notebook = "^7.2.1"
+mlcopilot = "^0.0.8"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
